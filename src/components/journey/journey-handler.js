@@ -5,7 +5,7 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-import { FRStep, Config } from '@forgerock/javascript-sdk';
+import { FRStep } from '@forgerock/javascript-sdk';
 import { useEffect, useState } from 'react';
 import { NativeModules } from 'react-native';
 
@@ -13,17 +13,37 @@ import { NativeModules } from 'react-native';
  * Please ensure you have created an .env.js from the
  * .env.example.js template!
  */
-import { DEBUGGER_OFF, API_BASE_URL } from '../../../.env';
+import { DEBUGGER_OFF } from '../../../.env';
 
 const { FRAuthSampleBridge } = NativeModules;
+console.log('>>> Bridge methods:', Object.keys(FRAuthSampleBridge || {}));
 
-/** ForgeRock SDK auth actions that carry the same request shape as authenticate. */
-const AUTH_HEADER_ACTIONS = new Set(['AUTHENTICATE', 'START_AUTHENTICATE']);
 
 /**
- * Adds custom headers to authenticate / start-authenticate requests.
- * Must call `next()` so the middleware chain continues (see @forgerock/javascript-sdk RequestMiddleware).
+ * Custom headers managed from JS — applies to both iOS and Android
+ * via the native bridge. Add or modify headers here only.
  */
+const CUSTOM_HEADERS = JSON.stringify({
+  'Locale': 'EN-SA',
+  'Chnl-CountryCode': 'SA',
+  'Chnl-Group-Member': 'SABB',
+  'request_type': 'REG',
+  'Transaction-Type': 'MB_Login',
+  'channel': 'MOB',
+  'Latitude': '17.521898',
+  'Longitude': '78.3208919',
+  'Src-Device-Id': '03f1223469e6d29d',
+  'device-status': '',
+  'Consumer-Id': 'LOGON',
+  'Request-Correlation-Id': 'bb003f6d-91c0-4415-8320-bfe76868ecb6',
+  'x-forgerock-transactionid': 'OHMdc2a0e26beb75e1aab1ca41b8d76d',
+  'pref_language': 'EN',
+  'Global-Channel-Id': 'OHM',
+  'GBGF': 'RBWM',
+  'Accept-Language': 'EN',
+  'IPAddress': '124.123.140.218',
+});
+
 
 const errorMessages = {
   login: 'Login failed. Please try again.',
@@ -64,6 +84,8 @@ export default function useJourneyHandler({ type }) {
   // User state
   const [user, setUser] = useState(null);
 
+  const [inputValue, setInputValue] = useState('');
+
   /**
    * Since we have API calls to AM, we need to handle these requests as side-effects.
    * This will allow the view to render, but update/re-render after the request completes.
@@ -90,14 +112,17 @@ export default function useJourneyHandler({ type }) {
            * our data to render for our login screen.
            *************************************************************** */
           if (!DEBUGGER_OFF) debugger;
-          data = await FRAuthSampleBridge[type]();
+          console.log('>>> Calling bridge:', type, 'with headers:', CUSTOM_HEADERS);
+          data = await FRAuthSampleBridge[type](CUSTOM_HEADERS);
+          console.log('>>> Bridge response:', data);
+
         } catch (err) {
           /**
            * If we fail here, the user might have a lingering session, so
            * let's log them out, and start over.
            */
           await FRAuthSampleBridge.logout();
-          data = await FRAuthSampleBridge[type]();
+          data = await FRAuthSampleBridge[type](CUSTOM_HEADERS);
         }
 
         next = JSON.parse(data);
@@ -138,6 +163,7 @@ export default function useJourneyHandler({ type }) {
           if (!DEBUGGER_OFF) debugger;
           const response = await FRAuthSampleBridge.next(
             JSON.stringify(renderStep.payload),
+            CUSTOM_HEADERS,
           );
           /**
            * Condition for handling start, error handling and completion
@@ -171,7 +197,7 @@ export default function useJourneyHandler({ type }) {
            * Handle basic form error
            */
           setFormFailureMessage(
-            err.message === 'LoginFailure' ? errorMessages[type] : err.message,
+            err.message === 'Login failure' ? errorMessages[type] : err.message,
           );
           setProcessingForm(false);
 
@@ -184,7 +210,7 @@ export default function useJourneyHandler({ type }) {
              * in the catch block
              * ******************************************************************* */
             if (!DEBUGGER_OFF) debugger;
-            const response = await FRAuthSampleBridge[type]();
+            const response = await FRAuthSampleBridge[type](CUSTOM_HEADERS);
 
             const data = JSON.parse(response);
 

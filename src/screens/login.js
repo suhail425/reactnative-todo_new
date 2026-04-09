@@ -14,6 +14,15 @@ import { DEBUGGER_OFF,API_BASE_URL } from '../../.env';
 
 import Form from '../components/journey/form';
 
+
+
+
+export default function Login() {
+  const [primary] = useToken('colors', ['primary.600']);
+  const linkStyle = {
+    color: primary,
+    textDecorationLine: 'underline',
+  };
 function addHeadersMiddleware(req, action, next) {
   if (DEBUGGER_OFF) debugger;
 
@@ -48,15 +57,6 @@ next();
     },
     middleware: [addHeadersMiddleware],
   });
-
-
-export default function Login() {
-  const [primary] = useToken('colors', ['primary.600']);
-  const linkStyle = {
-    color: primary,
-    textDecorationLine: 'underline',
-  };
-
 
 
   return (

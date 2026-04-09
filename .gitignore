@@ -1,0 +1,25 @@
+# Node
+node_modules/
+
+# iOS
+ios/Pods/
+ios/build/
+*.xcworkspace
+ios/.xcode.env.local
+
+# Android
+android/build/
+android/.gradle/
+android/app/build/
+
+# Environment
+.env
+.env.local
+.env.js
+
+# Metro
+.metro-health-check*
+
+# Xcode
+*.xcuserstate
+DerivedData/

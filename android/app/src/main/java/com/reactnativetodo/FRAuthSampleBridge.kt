@@ -49,6 +49,10 @@ import org.forgerock.android.auth.callback.ValidatedUsernameCallback
 import org.forgerock.android.auth.callback.WebAuthnAuthenticationCallback
 import org.forgerock.android.auth.callback.WebAuthnRegistrationCallback
 import org.forgerock.android.auth.exception.AuthenticationRequiredException
+import org.forgerock.android.auth.interceptor.Action
+import org.forgerock.android.auth.interceptor.ActionType
+import org.forgerock.android.auth.interceptor.RequestInterceptor
+import org.forgerock.android.auth.interceptor.RequestInterceptorRegistry
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -64,6 +68,25 @@ class FRAuthSampleBridge internal constructor(var context: ReactApplicationConte
     var currentNode: Node? = null
     var listener: NodeListener<*>? = null
     var reactNativePromise: Promise? = null
+
+    /**
+    * Parses headers JSON from JS layer and registers a dynamic interceptor.
+    * Call this before every FRUser.login / register / next.
+    */
+    private fun applyHeadersFromJS(headersJson: String?) {
+        if (headersJson.isNullOrEmpty()) return
+        try {
+            val jsonObject = JSONObject(headersJson)
+            val headers = mutableMapOf<String, String>()
+            jsonObject.keys().forEach { key ->
+                headers[key] = jsonObject.getString(key)
+            }
+            RequestInterceptorRegistry.getInstance()
+                .register(DynamicHeadersRequestInterceptor(headers))
+        } catch (e: Exception) {
+            Logger.warn("FRAuthSampleBridge", "Failed to parse headers from JS: ${e.message}")
+        }
+    }
 
     override fun getName(): String {
         return "FRAuthSampleBridge"
@@ -115,6 +138,7 @@ class FRAuthSampleBridge internal constructor(var context: ReactApplicationConte
     @ReactMethod
     fun login(promise: Promise) {
         try {
+            applyHeadersFromJS(headersJson)
             authenticate(promise, true)
         } catch (e: Exception) {
             promise.reject("error", e.toString(), e)
@@ -205,6 +229,7 @@ class FRAuthSampleBridge internal constructor(var context: ReactApplicationConte
     @ReactMethod
     @Throws(InterruptedException::class)
     fun next(response: String?, promise: Promise) {
+        applyHeadersFromJS(headersJson)
         this.reactNativePromise = promise
         val gson = Gson()
         val responseObj = gson.fromJson(
@@ -637,4 +662,23 @@ internal class RawCallback {
 internal class RawInput {
     var name: String? = null
     var value: Any? = null
+}
+
+/**
+ * Dynamic request interceptor that applies headers passed from the JS layer.
+ * Registered before each native SDK call and unregistered after.
+ */
+class DynamicHeadersRequestInterceptor(private val headers: Map<String, String>) : RequestInterceptor {
+    override fun intercept(action: Action, request: okhttp3.Request): okhttp3.Request {
+        return when (action.type) {
+            ActionType.START_AUTHENTICATE.name,
+            ActionType.AUTHENTICATE.name,
+            ActionType.RESUME_AUTHENTICATE.name -> {
+                val builder = request.newBuilder()
+                headers.forEach { (key, value) -> builder.header(key, value) }
+                builder.build()
+            }
+            else -> request
+        }
+    }
 }

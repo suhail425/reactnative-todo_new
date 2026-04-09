@@ -41,7 +41,7 @@ public class FRAuthSampleBridge: NSObject {
      * - network
      * - warning
      * - error
-     * - all 
+     * - all
      */
     FRLog.setLogLevel([.all])
     DispatchQueue.main.async {
@@ -66,13 +66,6 @@ public class FRAuthSampleBridge: NSObject {
         )
         try FRAuth.start(options: options)
 
-        // Custom headers for AM requests must be applied in native FRCore (see RequestInterceptor).
-        // JavaScript Config.set / middleware only affects @forgerock/javascript-sdk fetch(), not this bridge.
-        // RequestInterceptorRegistry.shared.registerInterceptors(
-        //   interceptors: [CustomHeadersRequestInterceptor()],
-        //   shouldOverride: true
-        // )
-
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
           /**
            * Check for FRAuth.shared. If it exists, the SDK is good to go. If not,
@@ -90,14 +83,33 @@ public class FRAuthSampleBridge: NSObject {
       }
     }
   }
-  
+
+  /**
+   * Parses headers JSON from JS layer and registers a dynamic interceptor.
+   * Mirrors applyHeadersFromJS in FRAuthSampleBridge.kt
+   */
+  private func applyHeadersFromJS(_ headersJson: String) {
+    guard !headersJson.isEmpty,
+          let data = headersJson.data(using: .utf8),
+          let dict = try? JSONSerialization.jsonObject(with: data) as? [String: String]
+    else { return }
+
+    RequestInterceptorRegistry.shared.registerInterceptors(
+      interceptors: [DynamicHeadersRequestInterceptor(headers: dict)],
+      shouldOverride: true
+    )
+  }
+
   /**
    * Method for the initial call to the journey/tree defined in `forgerock_auth_service_name` within the FRAuthConfig.
    */
   @objc func login(
-    _ resolve: @escaping RCTPromiseResolveBlock,
+    _ headersJson: String,
+    resolve: @escaping RCTPromiseResolveBlock,
     rejecter reject: @escaping RCTPromiseRejectBlock) {
-      
+
+      applyHeadersFromJS(headersJson)
+
       /** *************************************************************************
        * SDK INTEGRATION POINT
        * Summary: Make initial request to the journey/tree for login
@@ -117,21 +129,24 @@ public class FRAuthSampleBridge: NSObject {
    * within the FRAuthConfig.
    */
   @objc func register(
-    _ resolve: @escaping RCTPromiseResolveBlock,
+    _ headersJson: String,
+    resolve: @escaping RCTPromiseResolveBlock,
     rejecter reject: @escaping RCTPromiseRejectBlock) {
 
-    /** *************************************************************************
-     * SDK INTEGRATION POINT
-     * Summary: Make initial request to the journey/tree for registration
-     * --------------------------------------------------------------------------
-     * Details: This calls the tree assigned to registration within the
-     * FRAuthConfig. It returns a `node`, which is also known as a "step". This
-     * `node` is a collection of "callbacks", which represent a request for
-     * atomic information
-     ************************************************************************* */
-    FRUser.register { (user, node, error) in
-      self.handleNode(user, node, error, resolve: resolve, rejecter: reject)
-    }
+      applyHeadersFromJS(headersJson)
+
+      /** *************************************************************************
+       * SDK INTEGRATION POINT
+       * Summary: Make initial request to the journey/tree for registration
+       * --------------------------------------------------------------------------
+       * Details: This calls the tree assigned to registration within the
+       * FRAuthConfig. It returns a `node`, which is also known as a "step". This
+       * `node` is a collection of "callbacks", which represent a request for
+       * atomic information
+       ************************************************************************* */
+      FRUser.register { (user, node, error) in
+        self.handleNode(user, node, error, resolve: resolve, rejecter: reject)
+      }
   }
 
   /**
@@ -140,8 +155,11 @@ public class FRAuthSampleBridge: NSObject {
    */
   @objc func next(
     _ response: String,
+    headersJson: String,
     resolve: @escaping RCTPromiseResolveBlock,
     rejecter reject: @escaping RCTPromiseRejectBlock) {
+
+    applyHeadersFromJS(headersJson)
 
     /**
      * Serialized JSON response will need to be preped for parsing.
@@ -272,7 +290,7 @@ public class FRAuthSampleBridge: NSObject {
       reject("Error", "UnkownError", nil)
     }
   }
-  
+
   func next(node: Node, resolve: @escaping RCTPromiseResolveBlock,
             rejecter reject: @escaping RCTPromiseRejectBlock) {
     node.next(completion: { (user: FRUser?, node, error) in
@@ -287,7 +305,7 @@ public class FRAuthSampleBridge: NSObject {
           return
         }
         print("User --------->: \(String(describing: user.debugDescription))")
-        
+
         /**
          * This journey/tree has completed without error, resolve promise with user tokens
          */
@@ -440,10 +458,10 @@ public class FRAuthSampleBridge: NSObject {
     node: Node,
     resolve: @escaping RCTPromiseResolveBlock,
     rejecter reject: @escaping RCTPromiseRejectBlock) {
-    
+
     // Execute the device profile collection
     callback.execute { collectedData in
-      guard 
+      guard
         !collectedData.isEmpty
       else {
         let errorMsg = "Device profile callback handler: Collectors returned no device profile data"
@@ -457,8 +475,6 @@ public class FRAuthSampleBridge: NSObject {
       self.next(node: node, resolve: resolve, rejecter: reject)
     }
   }
-
-
 
   /**
    * Private method for preparing a node returned from the iOS SDK for the React Native layer.
@@ -486,20 +502,20 @@ public class FRAuthSampleBridge: NSObject {
       }
     }
   }
-  
+
   func extract(node: Node, resolve: @escaping RCTPromiseResolveBlock,
                rejecter reject: @escaping RCTPromiseRejectBlock) {
     for (outerIndex, nodeCallback) in node.callbacks.enumerated() {
         if let thisCallback = nodeCallback as? WebAuthnRegistrationCallback {
           DispatchQueue.main.async {
           thisCallback.register(node: node, usePasskeysIfAvailable: true, onSuccess: { (attestation) in
-            
+
             self.next(node: node, resolve: resolve, rejecter: reject)
-            
+
           }) { (error) in
             self.next(node: node, resolve: resolve, rejecter: reject)
           }
-          
+
         }
           return
       }
@@ -510,7 +526,7 @@ public class FRAuthSampleBridge: NSObject {
           }) { (error) in
             self.next(node: node, resolve: resolve, rejecter: reject)
           }
-          
+
         }
         return
       }
@@ -522,38 +538,28 @@ public class FRAuthSampleBridge: NSObject {
     catch {
       reject("Error", "Serialization of node failed", error)
     }
-    
+
   }
 }
 
-/// Adds the same channel/location headers as the JS middleware in `journey-handler.js` to native SDK HTTP calls.
-private final class CustomHeadersRequestInterceptor: RequestInterceptor {
+/**
+ * Dynamic request interceptor that applies headers passed from the JS layer.
+ * Mirrors DynamicHeadersRequestInterceptor in FRAuthSampleBridge.kt
+ */
+private final class DynamicHeadersRequestInterceptor: RequestInterceptor {
+  private let headers: [String: String]
+
+  init(headers: [String: String]) {
+    self.headers = headers
+  }
+
   func intercept(request: Request, action: Action) -> Request {
     var r = request
     switch action.type {
     case ActionType.START_AUTHENTICATE.rawValue,
          ActionType.AUTHENTICATE.rawValue,
          ActionType.RESUME_AUTHENTICATE.rawValue:
-      r.updateHeader(headers: [
-        "Locale": "EN-SA",
-        "Chnl-CountryCode": "SA",
-        "Chnl-Group-Member": "SABB",
-        "request_type": "REG",
-        "Transaction-Type": "MB_Login",
-        "channel": "MOB",
-        "Latitude": "17.521898",
-        "Longitude": "78.3208919",
-        "Src-Device-Id": "03f1223469e6d29d",
-        "device-status": "",
-        "Consumer-Id": "LOGON",
-        "Request-Correlation-Id": "bb003f6d-91c0-4415-8320-bfe76868ecb6",
-        "x-forgerock-transactionid": "OHMdc2a0e26beb75e1aab1ca41b8d76d",
-        "pref_language": "EN",
-        "Global-Channel-Id": "OHM",
-        "GBGF": "RBWM",
-        "Accept": "-Language=EN",
-        "IPAddress": "124.123.140.218",
-      ])
+      r.updateHeader(headers: headers)
     default:
       break
     }

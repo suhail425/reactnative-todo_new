@@ -29,9 +29,9 @@
 		3AB0458D2D020E3900C49650 /* FRAuthSampleHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB045892D020E3900C49650 /* FRAuthSampleHelpers.swift */; };
 		3AB045912D02368500C49650 /* FRAuthSampleBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB0458F2D02368500C49650 /* FRAuthSampleBridge.m */; };
 		5CFD640CEF6640F11DCCB901 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
+		7A7C4106AEBCC88502527891 /* libPods-reactnativetodo-reactnativetodoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB402CC8CAD9456CAB0B03E4 /* libPods-reactnativetodo-reactnativetodoTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		A1836A56BCB315219583265E /* libPods-reactnativetodo-reactnativetodoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45F43DDC6D9FBB15EB0221A5 /* libPods-reactnativetodo-reactnativetodoTests.a */; };
-		D2B6FAEB5D255C7E918C3674 /* libPods-reactnativetodo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A0B113FD05CEF51FEF504A1 /* libPods-reactnativetodo.a */; };
+		C1AE8A15A10D8413238B560A /* libPods-reactnativetodo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E5DCBA741401F6B7B8B1F60 /* libPods-reactnativetodo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,14 +48,12 @@
 		00E356EE1AD99517003FC87E /* reactnativetodoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = reactnativetodoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* reactnativetodoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = reactnativetodoTests.m; sourceTree = "<group>"; };
-		1195A4033BCB75FFDE20BEBE /* Pods-reactnativetodo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reactnativetodo.release.xcconfig"; path = "Target Support Files/Pods-reactnativetodo/Pods-reactnativetodo.release.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* reactnativetodo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = reactnativetodo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = reactnativetodo/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = reactnativetodo/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = reactnativetodo/main.m; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = reactnativetodo/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		19C3C261E21022AB8DACFE45 /* Pods-reactnativetodo-reactnativetodoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reactnativetodo-reactnativetodoTests.debug.xcconfig"; path = "Target Support Files/Pods-reactnativetodo-reactnativetodoTests/Pods-reactnativetodo-reactnativetodoTests.debug.xcconfig"; sourceTree = "<group>"; };
-		1A0B113FD05CEF51FEF504A1 /* libPods-reactnativetodo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-reactnativetodo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3419676EA673EED821FC3881 /* Pods-reactnativetodo-reactnativetodoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reactnativetodo-reactnativetodoTests.debug.xcconfig"; path = "Target Support Files/Pods-reactnativetodo-reactnativetodoTests/Pods-reactnativetodo-reactnativetodoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3A157BD32D0BFEDF0006B1D8 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Bold.ttf"; path = "../assets/fonts/OpenSans-Bold.ttf"; sourceTree = SOURCE_ROOT; };
 		3A157BD42D0BFEDF0006B1D8 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-BoldItalic.ttf"; path = "../assets/fonts/OpenSans-BoldItalic.ttf"; sourceTree = SOURCE_ROOT; };
 		3A157BD52D0BFEDF0006B1D8 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-ExtraBold.ttf"; path = "../assets/fonts/OpenSans-ExtraBold.ttf"; sourceTree = SOURCE_ROOT; };
@@ -77,11 +75,13 @@
 		3AB0458A2D020E3900C49650 /* FRAuthSampleStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FRAuthSampleStructs.swift; path = reactnativetodo/FRAuthSampleStructs.swift; sourceTree = "<group>"; };
 		3AB0458F2D02368500C49650 /* FRAuthSampleBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FRAuthSampleBridge.m; path = reactnativetodo/FRAuthSampleBridge.m; sourceTree = "<group>"; };
 		3AEA5AFE2D098D1700547BF0 /* reactnativetodo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = reactnativetodo.entitlements; path = reactnativetodo/reactnativetodo.entitlements; sourceTree = "<group>"; };
-		45F43DDC6D9FBB15EB0221A5 /* libPods-reactnativetodo-reactnativetodoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-reactnativetodo-reactnativetodoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7FF0E3AE271BF068C49CF9B0 /* Pods-reactnativetodo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reactnativetodo.debug.xcconfig"; path = "Target Support Files/Pods-reactnativetodo/Pods-reactnativetodo.debug.xcconfig"; sourceTree = "<group>"; };
-		80EA892B9E88FC32735A50B1 /* Pods-reactnativetodo-reactnativetodoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reactnativetodo-reactnativetodoTests.release.xcconfig"; path = "Target Support Files/Pods-reactnativetodo-reactnativetodoTests/Pods-reactnativetodo-reactnativetodoTests.release.xcconfig"; sourceTree = "<group>"; };
+		6E381144C723AA4A7365D508 /* Pods-reactnativetodo-reactnativetodoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reactnativetodo-reactnativetodoTests.release.xcconfig"; path = "Target Support Files/Pods-reactnativetodo-reactnativetodoTests/Pods-reactnativetodo-reactnativetodoTests.release.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = reactnativetodo/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8E5DCBA741401F6B7B8B1F60 /* libPods-reactnativetodo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-reactnativetodo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C15DCDB5FFE58484A1B6E36B /* Pods-reactnativetodo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reactnativetodo.release.xcconfig"; path = "Target Support Files/Pods-reactnativetodo/Pods-reactnativetodo.release.xcconfig"; sourceTree = "<group>"; };
+		CB402CC8CAD9456CAB0B03E4 /* libPods-reactnativetodo-reactnativetodoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-reactnativetodo-reactnativetodoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F62E082F4CBF684318C4B9BE /* Pods-reactnativetodo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reactnativetodo.debug.xcconfig"; path = "Target Support Files/Pods-reactnativetodo/Pods-reactnativetodo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1836A56BCB315219583265E /* libPods-reactnativetodo-reactnativetodoTests.a in Frameworks */,
+				7A7C4106AEBCC88502527891 /* libPods-reactnativetodo-reactnativetodoTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,7 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2B6FAEB5D255C7E918C3674 /* libPods-reactnativetodo.a in Frameworks */,
+				C1AE8A15A10D8413238B560A /* libPods-reactnativetodo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,8 +146,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				1A0B113FD05CEF51FEF504A1 /* libPods-reactnativetodo.a */,
-				45F43DDC6D9FBB15EB0221A5 /* libPods-reactnativetodo-reactnativetodoTests.a */,
+				8E5DCBA741401F6B7B8B1F60 /* libPods-reactnativetodo.a */,
+				CB402CC8CAD9456CAB0B03E4 /* libPods-reactnativetodo-reactnativetodoTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -206,10 +206,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				7FF0E3AE271BF068C49CF9B0 /* Pods-reactnativetodo.debug.xcconfig */,
-				1195A4033BCB75FFDE20BEBE /* Pods-reactnativetodo.release.xcconfig */,
-				19C3C261E21022AB8DACFE45 /* Pods-reactnativetodo-reactnativetodoTests.debug.xcconfig */,
-				80EA892B9E88FC32735A50B1 /* Pods-reactnativetodo-reactnativetodoTests.release.xcconfig */,
+				F62E082F4CBF684318C4B9BE /* Pods-reactnativetodo.debug.xcconfig */,
+				C15DCDB5FFE58484A1B6E36B /* Pods-reactnativetodo.release.xcconfig */,
+				3419676EA673EED821FC3881 /* Pods-reactnativetodo-reactnativetodoTests.debug.xcconfig */,
+				6E381144C723AA4A7365D508 /* Pods-reactnativetodo-reactnativetodoTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -221,12 +221,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "reactnativetodoTests" */;
 			buildPhases = (
-				C48FA9D20AEBB751AC0FA3C1 /* [CP] Check Pods Manifest.lock */,
+				7F09A0A689DCB6526A6FD06F /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				1FA8CF2BB5E53640CBC37635 /* [CP] Embed Pods Frameworks */,
-				55E5CA6064D144A00B4AA353 /* [CP] Copy Pods Resources */,
+				5F2246ED71C448EB4546977B /* [CP] Embed Pods Frameworks */,
+				52FD656C88F3669DFFF5615F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -242,13 +242,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "reactnativetodo" */;
 			buildPhases = (
-				3B8C640BF05706DBBCB08F79 /* [CP] Check Pods Manifest.lock */,
+				6C98CB0D0B75ADE215FAAB48 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				6D26ADE0150DE8E77F5E40E2 /* [CP] Embed Pods Frameworks */,
-				DEB85A51F226074A3192EE97 /* [CP] Copy Pods Resources */,
+				52E98E6696A6C1DAC45F4B67 /* [CP] Embed Pods Frameworks */,
+				EAC92FEB3AF3375AA3AE9EA0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -344,7 +344,41 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"$REACT_NATIVE_PATH/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"$REACT_NATIVE_PATH/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		1FA8CF2BB5E53640CBC37635 /* [CP] Embed Pods Frameworks */ = {
+		52E98E6696A6C1DAC45F4B67 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-reactnativetodo/Pods-reactnativetodo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-reactnativetodo/Pods-reactnativetodo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-reactnativetodo/Pods-reactnativetodo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		52FD656C88F3669DFFF5615F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-reactnativetodo-reactnativetodoTests/Pods-reactnativetodo-reactnativetodoTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-reactnativetodo-reactnativetodoTests/Pods-reactnativetodo-reactnativetodoTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-reactnativetodo-reactnativetodoTests/Pods-reactnativetodo-reactnativetodoTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5F2246ED71C448EB4546977B /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -361,7 +395,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-reactnativetodo-reactnativetodoTests/Pods-reactnativetodo-reactnativetodoTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		3B8C640BF05706DBBCB08F79 /* [CP] Check Pods Manifest.lock */ = {
+		6C98CB0D0B75ADE215FAAB48 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -383,41 +417,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		55E5CA6064D144A00B4AA353 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-reactnativetodo-reactnativetodoTests/Pods-reactnativetodo-reactnativetodoTests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-reactnativetodo-reactnativetodoTests/Pods-reactnativetodo-reactnativetodoTests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-reactnativetodo-reactnativetodoTests/Pods-reactnativetodo-reactnativetodoTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6D26ADE0150DE8E77F5E40E2 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-reactnativetodo/Pods-reactnativetodo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-reactnativetodo/Pods-reactnativetodo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-reactnativetodo/Pods-reactnativetodo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C48FA9D20AEBB751AC0FA3C1 /* [CP] Check Pods Manifest.lock */ = {
+		7F09A0A689DCB6526A6FD06F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -439,7 +439,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DEB85A51F226074A3192EE97 /* [CP] Copy Pods Resources */ = {
+		EAC92FEB3AF3375AA3AE9EA0 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -494,7 +494,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 19C3C261E21022AB8DACFE45 /* Pods-reactnativetodo-reactnativetodoTests.debug.xcconfig */;
+			baseConfigurationReference = 3419676EA673EED821FC3881 /* Pods-reactnativetodo-reactnativetodoTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -521,7 +521,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 80EA892B9E88FC32735A50B1 /* Pods-reactnativetodo-reactnativetodoTests.release.xcconfig */;
+			baseConfigurationReference = 6E381144C723AA4A7365D508 /* Pods-reactnativetodo-reactnativetodoTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -545,7 +545,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7FF0E3AE271BF068C49CF9B0 /* Pods-reactnativetodo.debug.xcconfig */;
+			baseConfigurationReference = F62E082F4CBF684318C4B9BE /* Pods-reactnativetodo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -553,10 +553,10 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = JV6EC9KSN3;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = reactnativetodo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -579,7 +579,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1195A4033BCB75FFDE20BEBE /* Pods-reactnativetodo.release.xcconfig */;
+			baseConfigurationReference = C15DCDB5FFE58484A1B6E36B /* Pods-reactnativetodo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -587,9 +587,9 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = JV6EC9KSN3;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = reactnativetodo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
